@@ -1,0 +1,28 @@
+{
+  "name": "mvp",
+  "version": "1.0.0",
+  "description": "mvp music app w/ spotify api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thismax/mvp.git"
+  },
+  "author": "max",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thismax/mvp/issues"
+  },
+  "homepage": "https://github.com/thismax/mvp#readme",
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "celery-man": "0.0.2",
+    "express": "^4.15.4",
+    "path": "^0.12.7"
+  }
+}
