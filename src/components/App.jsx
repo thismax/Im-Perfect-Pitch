@@ -15,9 +15,10 @@ class App extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      currentSong: '',
+      currentSong: {},
       songs: [],
       ready: false,
+      uri: null,
     }
     this.findSong = this.findSong.bind(this);
     this.add = this.add.bind(this);
@@ -25,6 +26,7 @@ class App extends Component {
     this.fetchSongs = this.fetchSongs.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleLikeClick = this.handleLikeClick.bind(this);
+    this.selectSong = this.selectSong.bind(this);
   }
 
   remove(id) {
@@ -49,6 +51,13 @@ class App extends Component {
       })
   }
 
+  selectSong(uri) {
+    this.setState({
+      uri: uri,
+      ready: true
+    });
+  }
+
   fetchSongs() {
     axios.get('/songs/liked')
     .then((songs) => {
@@ -61,10 +70,12 @@ class App extends Component {
 
   handleLikeClick () {
     let current = this.state.currentSong;
+    console.log(current);
     let data = {
       name: current.name,
       artist: current.artists[0].name,
       album: current.album.name,
+      uri: current.uri,
     }
     this.add(data);
   }
@@ -74,7 +85,8 @@ class App extends Component {
     .then((results) => {
       this.setState({
         currentSong: results.data.tracks.items[0],
-        ready: true
+        ready: true,
+        uri: null,
       });
     });
   }
@@ -90,10 +102,10 @@ class App extends Component {
     if (this.state.ready) {
       return (
         <div className="main">
-          <h1 id="title">Perfect Pitch</h1>
+          <h1 id="title">(Im)Perfect Pitch</h1>
           <input type="text" id="request" onKeyPress={this.handleKeyPress} />
           <SpotifyPlayer
-            uri={this.state.currentSong.uri}
+            uri={this.state.uri || this.state.currentSong.uri}
             size={size}
             view={view}
             theme={theme}
@@ -101,7 +113,7 @@ class App extends Component {
           <h2 className="like" onClick={this.handleLikeClick}>Click Me to Add to Favorites!</h2>
           <div className="favorites">
             <h3>Favorites</h3>
-            <Songs songs={this.state.songs} remove={this.remove}/>
+            <Songs songs={this.state.songs} remove={this.remove} selectSong={this.selectSong}/>
           </div>
         </div>
       )
@@ -109,12 +121,12 @@ class App extends Component {
       this.fetchSongs();
       return (
         <div className="main">
-          <h1 id="title">Perfect Pitch</h1>
+          <h1 id="title">(Im)Perfect Pitch</h1>
           <input type="text" id="request" onKeyPress={this.handleKeyPress} />
           <h2 className="like" onClick={this.handleLikeClick}>Click Me to Add to Favorites!</h2>
           <div className="favorites">
             <h3>Favorites</h3>
-            <Songs songs={this.state.songs} remove={this.remove}/>
+            <Songs songs={this.state.songs} remove={this.remove} selectSong={this.selectSong}/>
           </div>
         </div>
       )

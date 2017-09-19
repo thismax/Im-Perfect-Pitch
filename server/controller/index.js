@@ -31,7 +31,8 @@ module.exports.addLike = (req, res) => {
 	Songs.create({
 		name: req.body.data.name,
 		album: req.body.data.album,
-		artist: req.body.data.artist
+		artist: req.body.data.artist,
+		uri: req.body.data.uri,
 	}).then((data) => {
 		res.status(201).send(data);
 	})
