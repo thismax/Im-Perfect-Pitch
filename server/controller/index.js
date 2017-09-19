@@ -6,11 +6,11 @@ module.exports.search = (req, res) => {
 	spotify.getToken()
 		.then((token) => {
 			spotify.search(q, token)
+			.then(results => {
+				res.status(201).send(results);
+			})
+			.catch(err => {
+				res.status(404).send(err);
+			});
 		})
-		.then(playlist => {
-			res.status(201).send(playlist);
-		})
-		.catch(err => {
-			res.status(404).send(err);
-		});
 };

@@ -28,16 +28,14 @@ module.exports = {
 
   search: (q, token) => {
     return new Promise ((resolve, reject) => {
-      console.log('here is token', token)
       let searchOptions = {
-        url: `https://api.spotify.com/v1/search?q=${q}&type=playlist&limit=1`,
+        url: `https://api.spotify.com/v1/search?q=${q}&type=track&limit=1`,
         headers: {
           'Authorization': 'Bearer ' + token
         },
         json: true,
       }
       rp.get(searchOptions).then((results) => {
-        console.log(results.items);
         resolve(results);
       }).catch((err) => reject(err));
     })
