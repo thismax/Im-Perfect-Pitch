@@ -110,8 +110,9 @@ class App extends Component {
             view={view}
             theme={theme}
           />
-          <h2 className="like" onClick={this.handleLikeClick}>Click Me to Add to Favorites!</h2>
+          <br/>
           <div className="favorites">
+            <i id="add" className="fa fa-plus-circle fa-4x" aria-hidden="true" onClick={this.handleLikeClick}></i>
             <h3>Favorites</h3>
             <Songs songs={this.state.songs} remove={this.remove} selectSong={this.selectSong}/>
           </div>
@@ -123,8 +124,7 @@ class App extends Component {
         <div className="main">
           <h1 id="title">(Im)Perfect Pitch</h1>
           <input type="text" id="request" onKeyPress={this.handleKeyPress} />
-          <h2 className="like" onClick={this.handleLikeClick}>Click Me to Add to Favorites!</h2>
-          <div className="favorites">
+          <div className="favorites-pre">
             <h3>Favorites</h3>
             <Songs songs={this.state.songs} remove={this.remove} selectSong={this.selectSong}/>
           </div>

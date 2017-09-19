@@ -2,6 +2,19 @@ body {
   margin: 0 20%;
 }
 
+.favorites {
+  margin-left: 10px;
+}
+
 .song {
-  padding: 5px;
+  padding: 13px 0;
+  font-size: 16px;
+}
+
+#request {
+  margin: 15px 0;
+}
+
+#add {
+  padding-top: 15px;
 }
