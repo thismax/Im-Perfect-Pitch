@@ -27,10 +27,11 @@ module.exports.fetchLikes = (req, res) => {
 };
 
 module.exports.addLike = (req, res) => {
+	console.log(req);
 	Songs.create({
-		name: req.body.name,
-		album: req.body.album,
-		artist: req.body.artist
+		name: req.body.data.name,
+		album: req.body.data.album,
+		artist: req.body.data.artist
 	}).then((data) => {
 		res.status(201).send(data);
 	})
