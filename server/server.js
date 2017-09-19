@@ -12,5 +12,5 @@ app.use(bodyParser.json());
 //will eventually need to include router middleware
 app.use(express.static(path.resolve(__dirname, '../static')));
 app.listen(8888, () => {
-  console.log('max is listening to you on 1337');
+  console.log('max is listening to you on 8888');
 });

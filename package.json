@@ -21,12 +21,14 @@
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "nodemon": "^1.12.1",
     "webpack": "^3.6.0"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "babel-cli": "^6.26.0",
     "body-parser": "^1.18.1",
     "celery-man": "0.0.2",
