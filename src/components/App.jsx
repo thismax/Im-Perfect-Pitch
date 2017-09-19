@@ -30,6 +30,7 @@ class App extends Component {
   remove(id) {
     axios.post('/songs/remove', {id})
       .then((response) => {
+        this.fetchSongs();
         console.log(response);
       })
       .catch((err) => {
@@ -87,7 +88,6 @@ class App extends Component {
 
   render() {
     if (this.state.ready) {
-      console.log(this.state.songs)
       return (
         <div className="main">
           <h1 id="title">Perfect Pitch</h1>
@@ -106,10 +106,17 @@ class App extends Component {
         </div>
       )
     } else {
-      this.findSong('dna');
       this.fetchSongs();
       return (
-        <div className='loading'>Loading</div>
+        <div className="main">
+          <h1 id="title">Perfect Pitch</h1>
+          <input type="text" id="request" onKeyPress={this.handleKeyPress} />
+          <h2 className="like" onClick={this.handleLikeClick}>Click Me to Add to Favorites!</h2>
+          <div className="favorites">
+            <h3>Favorites</h3>
+            <Songs songs={this.state.songs} remove={this.remove}/>
+          </div>
+        </div>
       )
     }
   }

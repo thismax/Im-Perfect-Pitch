@@ -6,7 +6,7 @@ const Songs = props => {
     <div className='songs'>
       {
         props.songs.map((song) => {
-          return (<Song song={song}/>);
+          return (<Song song={song} remove={props.remove}/>);
         })
       }
     </div>
