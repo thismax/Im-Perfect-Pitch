@@ -16,6 +16,17 @@ module.exports.search = (req, res) => {
 		})
 };
 
+module.exports.fetchLikes = (req, res) => {
+	Songs.findAll()
+	.then((data) => {
+		res.status(200).send(data);
+	})
+	.catch((err) => {
+		console.log('hmmmmmm')
+		res.status(404).send(err);
+	})
+};
+
 module.exports.addLike = (req, res) => {
 	Songs.create({
 		name: req.body.name

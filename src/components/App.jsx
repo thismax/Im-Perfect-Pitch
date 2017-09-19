@@ -25,12 +25,10 @@ class App extends Component {
 
   findSong(q) {
     axios.post('/songs/search', {q})
-      .then((results) => {
-        this.setState({currentSong: results.data.tracks.items[0].uri});
-      })
+    .then((results) => {
+      this.setState({currentSong: results.data.tracks.items[0].uri});
+    })
   }
-
-
 
  handleKeyPress (event) {
   if(event.key == 'Enter'){
@@ -38,7 +36,6 @@ class App extends Component {
     this.findSong(event.target.value);
   }
 }
-
 
   render() {
     return (
