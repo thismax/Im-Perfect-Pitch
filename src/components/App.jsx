@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Songs from './Songs';
 
-export default class App extends Component {
-  constructor () {
+class App extends Component {
+  constructor (props) {
+    super(props);
     this.state = {
       songs: [],
       ready: false,
@@ -20,3 +21,5 @@ export default class App extends Component {
     )
   }
 };
+
+export default App;

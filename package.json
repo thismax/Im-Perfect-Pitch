@@ -38,6 +38,7 @@
     "querystring": "^0.2.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "spotify-web-api-node": "^2.5.0"
   }
 }
