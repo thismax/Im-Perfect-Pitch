@@ -5,7 +5,9 @@ const db = new Sequelize(url, {
 });
 
 const Songs = db.define('Songs', {
-  name: Sequelize.STRING
+  name: Sequelize.STRING,
+  artist: Sequelize.STRING,
+  album: Sequelize.STRING
 },{
   timestamps: false
 })

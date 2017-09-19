@@ -1,5 +1,4 @@
 const spotify = require('../api/spotify');
-const Promise = require('bluebird');
 const Songs = require('../db/index').Songs
 
 module.exports.search = (req, res) => {
@@ -29,7 +28,9 @@ module.exports.fetchLikes = (req, res) => {
 
 module.exports.addLike = (req, res) => {
 	Songs.create({
-		name: req.body.name
+		name: req.body.name,
+		album: req.body.album,
+		artist: req.body.artist
 	}).then((data) => {
 		res.status(201).send(data);
 	})
