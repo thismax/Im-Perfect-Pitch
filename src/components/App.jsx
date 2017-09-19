@@ -20,35 +20,75 @@ class App extends Component {
       ready: false,
     }
     this.findSong = this.findSong.bind(this);
+    this.remove = this.remove.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleLikeClick = this.handleLikeClick.bind(this);
   }
+
+  remove(id) {
+    axios.post('/songs/remove', {id})
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  add(data) {
+    axios.post('/songs/liked', {data})
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  fetchSongs() {
+    axios.get('/songs/liked')
+    .then((songs) => {
+      this.setState({songs});
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
+  handleLikeClick ( {
+
+  })
 
   findSong(q) {
     axios.post('/songs/search', {q})
     .then((results) => {
       this.setState({currentSong: results.data.tracks.items[0].uri});
-    })
+    });
   }
 
- handleKeyPress (event) {
-  if(event.key == 'Enter'){
-    console.log('key press worked')
-    this.findSong(event.target.value);
+  handleKeyPress (event) {
+    if(event.key == 'Enter'){
+      this.findSong(event.target.value);
+      event.target.value = '';
+    }
   }
-}
 
   render() {
     return (
       <div className="main">
         <h1 id="title">Perfect Pitch</h1>
         <input type="text" id="request" onKeyPress={this.handleKeyPress} />
-        <Songs />
         <SpotifyPlayer
           uri={this.state.currentSong}
           size={size}
           view={view}
           theme={theme}
         />
+        <h2 className="like">Click Me to Add to Favorites!</h2>
+        <div className="favorites">
+          <h3>Favorites</h3>
+          <Songs songs={this.state.songs} remove={this.remove}/>
+        </div>
       </div>
     )
   }
