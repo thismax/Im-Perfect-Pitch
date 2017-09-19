@@ -1,13 +1,16 @@
 const spotify = require('../api/spotify');
+const Promise = require('bluebird');
 
 module.exports.search = (req, res) => {
-	const query = req.body.query;
-  //need to use spotify fetch method here
-	.then(song => {
-		res.send(song.tracks.items[0]);
-	})
-	.catch(err => {
-		res.send(err);
-		console.error(err);
-	});
+	const q = req.body.q;
+	spotify.getToken()
+		.then((token) => {
+			spotify.search(q, token)
+		})
+		.then(playlist => {
+			res.status(201).send(playlist);
+		})
+		.catch(err => {
+			res.status(404).send(err);
+		});
 };

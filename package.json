@@ -30,6 +30,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "babel-cli": "^6.26.0",
+    "bluebird": "^3.5.0",
     "body-parser": "^1.18.1",
     "celery-man": "0.0.2",
     "cors": "^2.8.4",
