@@ -5,7 +5,9 @@ const db = new Sequelize(url, {
 });
 
 const Songs = db.define('Songs', {
-  name: sequelize.STRING
+  name: Sequelize.STRING
+},{
+  timestamps: false
 })
 
 module.exports = {Songs};
