@@ -4,11 +4,11 @@ import Song from './Song';
 const Songs = props => {
   return (
     <div className='songs'>
-      <Song />
-      <Song />
-      <Song />
-      <Song />
-      <Song />
+      {
+        props.songs.map((song) => {
+          return (<Song song={song}/>);
+        })
+      }
     </div>
   )
 };

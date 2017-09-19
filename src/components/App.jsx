@@ -40,7 +40,8 @@ class App extends Component {
   add(data) {
     axios.post('/songs/liked', {data})
       .then((response) => {
-        console.log(response);
+        this.fetchSongs();
+        // console.log(response);
       })
       .catch((err) => {
         console.log(err);
@@ -50,7 +51,7 @@ class App extends Component {
   fetchSongs() {
     axios.get('/songs/liked')
     .then((songs) => {
-      this.setState({songs});
+      this.setState({songs: songs.data});
     })
     .catch((err) => {
       console.log(err);
@@ -86,6 +87,7 @@ class App extends Component {
 
   render() {
     if (this.state.ready) {
+      console.log(this.state.songs)
       return (
         <div className="main">
           <h1 id="title">Perfect Pitch</h1>
@@ -105,6 +107,7 @@ class App extends Component {
       )
     } else {
       this.findSong('dna');
+      this.fetchSongs();
       return (
         <div className='loading'>Loading</div>
       )
