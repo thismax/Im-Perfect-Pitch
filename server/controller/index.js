@@ -27,7 +27,6 @@ module.exports.fetchLikes = (req, res) => {
 };
 
 module.exports.addLike = (req, res) => {
-	console.log(req);
 	Songs.create({
 		name: req.body.data.name,
 		album: req.body.data.album,

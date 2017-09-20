@@ -51,10 +51,14 @@ class App extends Component {
       })
   }
 
-  selectSong(uri) {
-    this.setState({
-      uri: uri,
-      ready: true
+  findSong(q) {
+    axios.post('/songs/search', {q})
+    .then((results) => {
+      this.setState({
+        currentSong: results.data.tracks.items[0],
+        ready: true,
+        uri: null,
+      });
     });
   }
 
@@ -68,9 +72,15 @@ class App extends Component {
     })
   }
 
+  selectSong(uri) {
+    this.setState({
+      uri: uri,
+      ready: true
+    });
+  }
+
   handleLikeClick () {
     let current = this.state.currentSong;
-    console.log(current);
     let data = {
       name: current.name,
       artist: current.artists[0].name,
@@ -78,17 +88,6 @@ class App extends Component {
       uri: current.uri,
     }
     this.add(data);
-  }
-
-  findSong(q) {
-    axios.post('/songs/search', {q})
-    .then((results) => {
-      this.setState({
-        currentSong: results.data.tracks.items[0],
-        ready: true,
-        uri: null,
-      });
-    });
   }
 
   handleKeyPress (event) {

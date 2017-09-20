@@ -4,7 +4,6 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const request = require('request');
-const querystring = require('querystring');
 //import routes
 const router = require('./router');
 const db = require('./db/index');
