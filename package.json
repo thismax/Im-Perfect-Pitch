@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server/server.js",
+    "start": "node server/server.js",
     "compile": "webpack --watch"
   },
   "repository": {
@@ -34,12 +34,14 @@
     "body-parser": "^1.18.1",
     "celery-man": "0.0.2",
     "cors": "^2.8.4",
+    "dotenv": "^4.0.0",
     "express": "^4.15.4",
     "path": "^0.12.7",
     "pg": "^7.3.0",
     "querystring": "^0.2.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-spotify-player": "^1.0.3",
     "request": "^2.81.0",
     "request-promise": "^4.2.1",
     "sequelize": "^4.8.4",

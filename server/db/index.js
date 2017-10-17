@@ -1,7 +1,9 @@
 const Sequelize = require('sequelize');
-const url = 'postgres://reszmjpn:Ar6FP05yYkHztFq6jZl44EhWynT8qSQI@elmer.db.elephantsql.com:5432/reszmjpn';
-const db = new Sequelize(url, {
-  dialect: 'pg'
+require('dotenv').config();
+const db = new Sequelize(process.env.NAME, process.env.USERNAME, process.env.PASSWORD, {
+  dialect: 'postgres',
+  host: process.env.HOST,
+  port: process.env.PORT,
 });
 
 const Songs = db.define('Songs', {
