@@ -1,5 +1,5 @@
 const spotify = require('../api/spotify');
-const Songs = require('../db/index').Songs
+const Songs = require('../db/index').Songs;
 
 module.exports.search = (req, res) => {
 	const q = req.body.q;
@@ -12,7 +12,7 @@ module.exports.search = (req, res) => {
 			.catch(err => {
 				res.status(404).send(err);
 			});
-		})
+		});
 };
 
 module.exports.fetchLikes = (req, res) => {
@@ -23,7 +23,7 @@ module.exports.fetchLikes = (req, res) => {
 	.catch((err) => {
 		console.log('hmmmmmm')
 		res.status(404).send(err);
-	})
+	});
 };
 
 module.exports.addLike = (req, res) => {
@@ -38,7 +38,7 @@ module.exports.addLike = (req, res) => {
 	.catch((err) => {
 		console.log('hmmmmmm')
 		res.status(404).send(err);
-	})
+	});
 };
 
 module.exports.removeLike = (req, res) => {
@@ -50,5 +50,5 @@ module.exports.removeLike = (req, res) => {
 	})
 	.catch((err)=> {
 		console.log(err);
-	})
+	});
 }

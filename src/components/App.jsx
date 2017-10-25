@@ -9,7 +9,6 @@ const size = {
 };
 const view = 'list'; // or 'coverart' 
 const theme = 'black'; // or 'white' 
- 
 
 class App extends Component {
   constructor (props) {
@@ -31,24 +30,24 @@ class App extends Component {
 
   remove(id) {
     axios.post('/songs/remove', {id})
-      .then((response) => {
-        this.fetchSongs();
-        console.log(response);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+    .then((response) => {
+      this.fetchSongs();
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   }
 
   add(data) {
     axios.post('/songs/liked', {data})
-      .then((response) => {
-        this.fetchSongs();
-        // console.log(response);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+    .then((response) => {
+      this.fetchSongs();
+      // console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   }
 
   findSong(q) {
@@ -69,7 +68,7 @@ class App extends Component {
     })
     .catch((err) => {
       console.log(err);
-    })
+    });
   }
 
   selectSong(uri) {
@@ -116,7 +115,7 @@ class App extends Component {
             <Songs songs={this.state.songs} remove={this.remove} selectSong={this.selectSong}/>
           </div>
         </div>
-      )
+      );
     } else {
       this.fetchSongs();
       return (
@@ -128,7 +127,7 @@ class App extends Component {
             <Songs songs={this.state.songs} remove={this.remove} selectSong={this.selectSong}/>
           </div>
         </div>
-      )
+      );
     }
   }
 };

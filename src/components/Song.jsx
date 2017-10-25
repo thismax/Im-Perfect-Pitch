@@ -9,7 +9,7 @@ const Song = ({song, remove, selectSong}) => {
       <i className="fa fa-play-circle-o fa-2x" aria-hidden="true" onClick={()=>{selectSong(song.uri)}}></i>
       <i className="fa fa-times-circle-o fa-2x" aria-hidden="true" onClick={()=>{remove(song.id)}}></i>
     </div>
-  )
+  );
 };
 
 export default Song;
