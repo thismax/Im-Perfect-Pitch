@@ -28,6 +28,10 @@ class App extends Component {
     this.selectSong = this.selectSong.bind(this);
   }
 
+  componentDidMount() {
+    this.fetchSongs()
+  }
+
   remove(id) {
     axios.post('/songs/remove', {id})
     .then((response) => {
@@ -117,7 +121,6 @@ class App extends Component {
         </div>
       );
     } else {
-      this.fetchSongs();
       return (
         <div className="main">
           <h1 id="title">(Im)Perfect Pitch</h1>
