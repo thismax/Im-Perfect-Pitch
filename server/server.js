@@ -17,7 +17,7 @@ app.use(express.static(path.resolve(__dirname, '../static')));
 app.use('/songs', router);
 //kick up the 4d3d3d3
 db.Songs.sync().then(()=>{
-  app.listen(8888, () => {
-    console.log('max is listening to you on 8888');
+  app.listen(5010, () => {
+    console.log('max is listening to you on 5010');
   });
 });
