@@ -1,10 +1,6 @@
 const Sequelize = require('sequelize');
 require('dotenv').config();
-const db = new Sequelize(process.env.NAME, process.env.USERNAME, process.env.PASSWORD, {
-  dialect: 'postgres',
-  host: process.env.HOST,
-  port: process.env.PORT,
-});
+const db = new Sequelize(process.env.NAME);
 
 const Songs = db.define('Songs', {
   name: Sequelize.STRING,
